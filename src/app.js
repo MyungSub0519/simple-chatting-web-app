@@ -41,8 +41,8 @@ app.use('/friends', friend);
 
 socketchat(io);
 
-httpServer.listen(port, () => {
-  console.log(`http://localhost:${port}/`);
+httpServer.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on http://localhost:${port}/`);
 });
 
 export { io };

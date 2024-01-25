@@ -25,10 +25,10 @@ class User extends Sequelize.Model {
   }
 
   static associate(models) {
-    // User와 FriendRequest 관계
+    // User와 FriendRequest 1:N 관계 설정
     this.hasMany(models.FriendRequest, { foreignKey: 'userId', as: 'friendRequests' });
 
-    // User와 Friend 관계
+    // User와 Friend 1:N 관계 설정
     this.hasMany(models.Friend, { foreignKey: 'userId', as: 'friends' });
   }
 }
@@ -60,7 +60,7 @@ class Friend extends Sequelize.Model {
   }
 
   static associate(models) {
-    // Friend와 User 관계
+    // 외래키 설정
     this.belongsTo(models.User, { foreignKey: 'userId', targetKey: 'userId', as: 'user' });
   }
 }
@@ -88,7 +88,7 @@ class FriendRequest extends Sequelize.Model {
   }
 
   static associate(models) {
-    // FriendRequest와 User 관계
+    // 외래키 설정
     this.belongsTo(models.User, { foreignKey: 'userId', targetKey: 'userId', as: 'user' });
   }
 }

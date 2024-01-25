@@ -30,10 +30,12 @@
         var socket = io();
         socket.emit('join', '1');
 
+        // count 이벤트로 전송된 채팅방 인원 수를 받고 user-list아래 p 태그를 조작
         socket.on('count', function (count) {
           $('.users-list p').text('채팅방 인원: ' + count);
         });
 
+        // 채팅방 참여자 목록을 받고 user-list아래 li 태그로 매핑
         socket.on('room member', function (userList) {
           $('#users-list').empty();
           $.each(userList, function (key, userName) {
@@ -41,6 +43,7 @@
           });
         });
 
+        // form 태그 submit 시
         $('form').submit(function (e) {
           e.preventDefault();
           socket.emit('chat message', $('#input').val(), '1');
@@ -48,10 +51,12 @@
           return false;
         });
 
+        // 창을 떠나면 소켓룸에서 나가도록 설정했습니다.
         window.addEventListener('beforeunload', function () {
           socket.emit('out', '1');
         });
 
+        // 소켓룸에 새로운 소켓이 연결되면 알림을 채팅창에 보냅니다.
         socket.on('join-out message', function (msg) {
           $('#messages').append($('<li>').text(msg));
         });

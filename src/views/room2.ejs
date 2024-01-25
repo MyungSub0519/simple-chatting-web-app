@@ -34,8 +34,11 @@
           $('.users-list p').text('채팅방 인원: ' + count);
         });
 
-        socket.on('username', function (userId) {
-          $('#users-list').append($('<li>').text(userId));
+        socket.on('room member', function (userList) {
+          $('#users-list').empty();
+          $.each(userList, function (key, userName) {
+            $('#users-list').append($('<li>').text(userName));
+          });
         });
 
         $('form').submit(function (e) {

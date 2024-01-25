@@ -4,18 +4,23 @@ class FriendRepository {
   }
 
   async selectFriendList(userId) {
+    // SELECT Friends.friendUserId, Users.createdAt
+    //   FROM Friends
+    //        LEFT OUTER JOIN Users
+    //        ON Users.userId = Friends.friendUserId
+    //  WHERE Friends.userId = userId;
     const result = await this.db.Friend.findAll({
-      attributes: ['friendUserId'], // Friends 테이블에서 friendUserId 선택
+      attributes: ['friendUserId'],
       include: [
         {
           model: this.db.User,
           as: 'user',
-          attributes: ['createdAt'], // Users 테이블에서 createdAt 선택
-          required: false, // LEFT OUTER JOIN
+          attributes: ['createdAt'],
+          required: false,
         },
       ],
       where: {
-        userId, // Friends.userId가 'test'인 레코드 필터링
+        userId,
       },
     });
     const userList = result.map((friend) => {
@@ -28,14 +33,19 @@ class FriendRepository {
   }
 
   async selectFriendRequestList(userId) {
+    // SELECT FriendRequests.userId, Users.createdAt
+    //   FROM FriendRequests
+    //        LEFT OUTER JOIN Users
+    //        ON Users.userId = FriendRequests.userId
+    //  WHERE targetUserId = 'test2';
     const requestFriendUserList = await this.db.FriendRequest.findAll({
-      attributes: ['userId'], // FriendRequests 테이블에서 userId 선택
+      attributes: ['userId'],
       include: [
         {
           model: this.db.User,
           as: 'user',
-          attributes: ['createdAt'], // Users 테이블에서 createdAt 선택
-          required: false, // LEFT OUTER JOIN
+          attributes: ['createdAt'],
+          required: false,
         },
       ],
       where: {
