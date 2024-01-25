@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat Rooms</title>
+    <link rel="stylesheet" type="text/css" href="css/rooms.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="/rooms">Rooms</a>
+      <a href="/users">Users</a>
+      <a href="/friends">Friends</a>
+      <a href="/logout">Logout</a>
+    </div>
+
+    <div class="room-list">
+      <div class="room">
+        <div class="room-info">채팅방 인원: <%= room1Count %> / 방 번호: 1</div>
+        <button class="join-btn" id="join-room1" onclick="location.href='/rooms/1'">입장</button>
+      </div>
+      <div class="room">
+        <div class="room-info">채팅방 인원: <%= room2Count %> / 방 번호: 2</div>
+        <button class="join-btn" onclick="location.href='/rooms/2'">입장</button>
+      </div>
+    </div>
+  </body>
+</html>

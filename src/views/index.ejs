@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <form class="login-form" action="/login" method="post">
+        <h2>Login</h2>
+        <input type="text" placeholder="ID" name="userid" required />
+        <input type="password" placeholder="Password" name="password" required />
+        <button type="submit" class="btn-login">Login</button>
+        <button type="button" class="btn-register" onclick="location.href='/signup'">Register</button>
+      </form>
+    </div>
+  </body>
+</html>

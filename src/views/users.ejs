@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat Rooms</title>
+    <link rel="stylesheet" type="text/css" href="css/users.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="/rooms">Rooms</a>
+      <a href="/users">Users</a>
+      <a href="/friends">Friends</a>
+      <a href="/logout">Logout</a>
+    </div>
+
+    <div class="user-list">
+      <% userList.forEach(function(user, index) { %>
+        <div class="user">
+          <div class="user-info">닉네임 : <%= user.userId %> / 가입날짜 : <%= user.createdAt %></div>
+          <form action="/users/<%= user.userId %>" method="post">
+            <button class="request-btn" id="request-btn<%= index %>">친구 추가</button>
+          </form>
+        </div>
+      <% }); %>
+    </div>
+  </body>
+</html>

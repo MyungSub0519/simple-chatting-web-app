@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" type="text/css" href="/css/room1.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="/rooms">Rooms</a>
+      <a href="/users">Users</a>
+      <a href="/friends">Friends</a>
+      <a href="/logout">Logout</a>
+    </div>
+    <div class="chat-container">
+      <div class="messages">
+        <ul id="messages"></ul>
+        <a><%= targetUserId %>님과의 DM</a>
+        <form id="form" action=""><input id="input" autocomplete="off" /><button>Send</button></form>
+        <button id="out-button" onclick="location.href='/rooms'">나가기</button>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(function () {
+        var socket = io();
+        socket.emit('join', '<%= DMroomName %>');
+
+        socket.on('count', function (count) {
+          $('.users-list p').text('채팅방 인원: ' + count);
+        });
+
+        socket.on('room member', function (userList) {
+          $('#users-list').empty();
+          $.each(userList, function (key, userName) {
+            $('#users-list').append($('<li>').text(userName));
+          });
+        });
+
+        $('form').submit(function (e) {
+          e.preventDefault();
+          socket.emit('chat message', $('#input').val(), '<%= DMroomName %>');
+          $('#input').val('');
+          return false;
+        });
+
+        window.addEventListener('beforeunload', function () {
+          socket.emit('out', '<%= DMroomName %>');
+        });
+
+        socket.on('join-out message', function (msg) {
+          $('#messages').append($('<li>').text(msg));
+        });
+
+        socket.on('chat message', function (msg, userId) {
+          $('#messages').append($('<li>').text(`${userId}: ${msg}`));
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #333;
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.navbar {
+  background-color: #222;
+  padding: 10px;
+  text-align: center;
+}
+.navbar a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  display: inline-block;
+}
+.chat-container {
+  display: flex;
+  padding: 20px;
+}
+.messages {
+  background-color: #222;
+  margin-right: 20px;
+  padding: 20px;
+  flex-grow: 1;
+}
+.users-list {
+  width: 200px;
+  background-color: #222;
+  padding: 20px;
+}

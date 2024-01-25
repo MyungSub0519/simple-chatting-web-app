@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat Rooms</title>
+    <link rel="stylesheet" type="text/css" href="css/friends.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="/rooms">Rooms</a>
+      <a href="/users">Users</a>
+      <a href="/friends">Friends</a>
+      <a href="/logout">Logout</a>
+    </div>
+
+    <div class="user-list">
+      <% userList.forEach(function(user, index) { %>
+        <div class="user">
+          <div class="user-info">닉네임 : <%= user.userId %> / 가입날짜 : <%= user.createdAt %></div>
+          <form action="/Friends/<%= user.userId %>?_method=DELETE" method="post">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button class="request-btn" id="request-btn<%= index %>">친구 삭제</button>
+          </form>
+          <form action="/Friends/<%= user.userId %>" method="get">
+            <button class="request-btn" id="request-btn<%= index %>">DM</button>
+          </form>
+        </div>
+      <% }); %>
+    </div>
+
+    <div class="navbar2">
+      <a href="/friends/request">수신함</a>
+      <a href="/friends">목록</a>
+    </div>
+  </body>
+</html>
