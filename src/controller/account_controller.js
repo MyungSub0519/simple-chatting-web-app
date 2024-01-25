@@ -6,7 +6,7 @@ class AccountController {
   showLoginPage(req, res) {
     const userId = req.session.userId;
     if (userId) {
-      res.render('rooms.ejs');
+      res.redirect('/rooms');
     } else {
       res.render('index.ejs');
     }
