@@ -1,5 +1,20 @@
 # Gamespring Simple Chatting Web APP Mission
 
+## 디렉토리 구조
+
+| 디렉토리 경로         | 설명                          |
+| --------------------- | ----------------------------- |
+| /docs                 | 서류, md에 필요한 이미지 모음 |
+| /src                  | 소스코드 모음                 |
+| /src/controller       | Controller Layer 소스코드     |
+| /src/lib              | util 함수 소스코드            |
+| /src/modules          | 모듈                          |
+| /src/public           | 정적 리소스                   |
+| /src/repository       | Repository Layer 소스코드     |
+| /src/repository/model | ORM Model 정의                |
+| /src/service          | ServiceLayer 소스코드         |
+| /src/views            | View 템플릿                   |
+
 ## 아키텍처
 
 ![architecture](./docs/img/Architecture.png)
@@ -7,8 +22,6 @@
 - MVC 패턴과 3-Tier-Architecture를 지향했습니다.
 
 ### View
-
-- View는 ejs 템플릿으로 이루어져 있습니다.
 
 - 사용자는 브라우저를 통해 View 화면 내에서 Controller에 요청을 보내는 동작을 수행할 수 있고, 반영된 응답을 View에서 확인할 수 있습니다.
 
@@ -18,7 +31,17 @@
 
 - Controller는 Request의 진입점 입니다.
 
-- 사용자가 View를 통한 입력에 대한 응답을 하거나
+- 사용자가 View를 통해 입력한 요청에 응답을 합니다.
+
+### Service
+
+- Service는 비즈니스 로직을 담당합니다.
+
+- 필요에 따라 Repository에 DB 정보를 요청합니다.
+
+### Repository
+
+- Service에 요청에 따라 DB 작업을 수행하고 응답합니다.
 
 ## 사용 기술
 
