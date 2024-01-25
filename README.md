@@ -2,18 +2,18 @@
 
 ## 디렉토리 구조
 
-| 디렉토리 경로         | 설명                          |
-| --------------------- | ----------------------------- |
-| /docs                 | 서류, md에 필요한 이미지 모음 |
-| /src                  | 소스코드 모음                 |
-| /src/controller       | Controller Layer 소스코드     |
-| /src/lib              | util 함수 소스코드            |
-| /src/modules          | 모듈                          |
-| /src/public           | 정적 리소스                   |
-| /src/repository       | Repository Layer 소스코드     |
-| /src/repository/model | ORM Model 정의                |
-| /src/service          | ServiceLayer 소스코드         |
-| /src/views            | View 템플릿                   |
+| 디렉토리 경로         | 설명                                           |
+| --------------------- | ---------------------------------------------- |
+| /docs                 | 서류, md에 필요한 이미지 모음, mysql 백업 파일 |
+| /src                  | 소스코드 모음                                  |
+| /src/controller       | Controller Layer 소스코드                      |
+| /src/lib              | util 함수 소스코드                             |
+| /src/modules          | 모듈                                           |
+| /src/public           | 정적 리소스                                    |
+| /src/repository       | Repository Layer 소스코드                      |
+| /src/repository/model | ORM Model 정의                                 |
+| /src/service          | ServiceLayer 소스코드                          |
+| /src/views            | View 템플릿                                    |
 
 ## 아키텍처
 
