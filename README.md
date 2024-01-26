@@ -1,5 +1,11 @@
 # Gamespring Simple Chatting Web APP Mission
 
+## 개요
+
+- 실행
+
+<pre><code>npm start</code></pre>
+
 ## 디렉토리 구조
 
 | 디렉토리 경로         | 설명                                           |
