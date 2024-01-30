@@ -1,4 +1,4 @@
-# Gamespring Simple Chatting Web APP Mission
+# Simple Chatting Web APP
 
 ## 개요
 
